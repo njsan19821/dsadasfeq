@@ -3,20 +3,21 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
 from faker import Faker
 import random, string
-import requests, os
+import os
+# import request
 from time import sleep
 from itertools import cycle
 from datetime import datetime, timedelta
 import sys
-from flask import Flask, render_template, request
+# from flask import Flask, render_template, request
 
 # app = Flask(__name__)
 
-# chrome_options = webdriver.ChromeOptions()
-# chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-# chrome_options.add_argument("--headless")
-# chrome_options.add_argument("--disable-dev-shm-usage")
-# chrome_options.add_argument("--no-sandbox")
+chrome_options = webdriver.ChromeOptions()
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
 
 def get_random_alphaNumeric_string(stringLength=8):
     lettersAndDigits = string.ascii_letters + string.digits
@@ -30,8 +31,8 @@ def digito_verificador(rut):
 
 class Killer:
     def __init__(self):
-        # self.driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+#         self.driver = webdriver.Chrome()
         # self.driver.add_argument('headless')
         self.initAction()
         
